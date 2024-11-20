@@ -25,8 +25,8 @@ def create_person():
     name = input("Name: ")
     birthdate = input("Date of Birth (DD-MM-YYYY): ")
     gender = input("Gender(F/M): ")
-    gender = input("Occupation: ")
-    new_person = Person(name, birthdate, gender, occupation="Unknown")
+    occupation = input("Occupation: ")
+    new_person = Person(name, birthdate, gender, occupation)
     return new_person
 
 def add_relation(relation, person):

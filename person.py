@@ -1,7 +1,7 @@
 from datetime import datetime
 
 class Person:
-    def __init__(self, name, birthdate, gender, occupation):
+    def __init__(self, name, birthdate, gender, occupation="Unknown"):
         self.name = name
         self.birthdate = birthdate #DD-MM-YYYY
         self.gender = gender
@@ -28,12 +28,12 @@ class Person:
         else:
             self.relation_dict[relation].append(new_person)
     
-    def search_family_relation(self, target_person_name):
-        """Searching for person that match this name"""
-        for (relation, people) in self.relation_dict.items():
-            for person in people:
-                if target_person_name == person.name:
-                    return person
+    # def search_family_relation(self, target_person_name):
+    #     """Searching for person that match this name"""
+    #     for (relation, people) in self.relation_dict.items():
+    #         for person in people:
+    #             if target_person_name == person.name:
+    #                 return person
     
     def __str__(self):
         string = ""
@@ -41,9 +41,7 @@ class Person:
             string += relation + ": "
             for person in people:
                 string += person.name  # + " "
-            string += "; "
+            string += " ; "
         
         return "Name: " + self.name + " , Age: " + str(self.age) + " , Relation: " + string
-    
-    def __hash__(self):
-        return hash((self.name))
+
