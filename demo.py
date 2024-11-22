@@ -37,9 +37,9 @@ def main():
 
     print()
     print("------------BFS Search for Family-----------------")
-    print(search_for_person(me, family_dict, "Alice"))
-    print(search_for_person(me, family_dict, "Peter"))
-    print(search_for_person(me, family_dict, "Lucy"))
+    search_for_person(me, family_dict, "Alice")
+    search_for_person(me, family_dict, "Peter")
+    search_for_person(me, family_dict, "Lucy")
 
 
 def create_person():
@@ -91,14 +91,15 @@ def search_for_person(me, family_dict, name):
                         return print_list_of_person(new_path)
                     relationship_stack.append(new_path)
 
-    return f"{name} cannot be founded to connect to {me.name}"
+    print(f"{name} cannot be founded to connect to {me.name}")
 
 
 def print_list_of_person(people_list):
     out_put = ""
     for person in people_list:
         out_put += "->" + person.name
-    return out_put
+    print(out_put)
+    print(f"The relationship distance from {people_list[0].name} to {people_list[-1].name} is {len(people_list)-1} steps.")
 
 
 main()
