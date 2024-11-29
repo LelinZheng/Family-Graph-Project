@@ -1,5 +1,6 @@
 from person import Person
 from collections import deque
+import json
 
 
 def main():
@@ -35,6 +36,14 @@ def main():
 
     print_family_dict(family_dict)
 
+    # Save to JSON
+    save_family_to_json(family_dict)
+    loaded_family_dict = load_family_from_json()  # Load from JSON
+
+    # Verify loaded data
+    for name, person in loaded_family_dict.items():
+        print(f"{name}: {person}")
+
     print()
     print("------------BFS Search for Family-----------------")
     search_for_person(me, family_dict, "Alice")
@@ -53,21 +62,12 @@ def create_person():
 
 def add_person_to_graph(person, family_dict):
     if person.name not in family_dict:
-        family_dict[person.name] = []
-    for (relation, relative) in person.relation_dict.items():
-        family_dict[person.name].append(relative)
+        family_dict[person.name] = person
 
 
 def print_family_dict(family_dict):
-    string = ""
-    for (center, relatives_list) in family_dict.items():
-        string += center + " -> "
-        for relatives in relatives_list:
-            for relative in relatives:
-                string += relative.name + " "
-        string += "; "
     print("The Family:\n")
-    print(string)
+    print(family_dict.items())
 
 
 def search_for_person(me, family_dict, name):
@@ -100,6 +100,45 @@ def print_list_of_person(people_list):
         out_put += "->" + person.name
     print(out_put)
     print(f"The relationship distance from {people_list[0].name} to {people_list[-1].name} is {len(people_list)-1} steps.")
+
+
+def save_family_to_json(family_dict, filename="Zeynab_family_tree.json"):
+    """Save the family data to a JSON file."""
+    json_data = {
+        name: person.to_dict()
+        for name, person in family_dict.items()
+    }
+    with open(filename, "w") as file:
+        json.dump(json_data, file, indent=4)
+    print(f"Family tree saved to {filename}")
+
+
+def load_family_from_json(filename="Zeynab_family_tree.json"):
+    """Load the family tree data from a JSON file and reconstruct the family graph."""
+    with open(filename, "r") as file:
+        json_data = json.load(file)
+    
+    # Step 1: Create Person objects without relations
+    family_dict = {
+        name: Person(
+            name=data["name"],
+            birthdate=data["birthdate"],
+            gender=data["gender"],
+            occupation=data["occupation"],
+            is_alive=data["is_alive"]
+        )
+        for name, data in json_data.items()
+    }
+
+    # Step 2: Re-establish relationships using `relation_dict`
+    for name, data in json_data.items():
+        person = family_dict[name]
+        for relation, relatives in data["relation_dict"].items():
+            for relative_name in relatives:
+                person.add_family_member(relation, family_dict[relative_name])
+
+    print(f"Family tree loaded from {filename}")
+    return family_dict
 
 
 main()

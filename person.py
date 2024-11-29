@@ -6,7 +6,7 @@ class Person:
         self.birthdate = birthdate  # DD-MM-YYYY
         self.gender = gender
         self.occupation = occupation
-        self.relation_dict = {}  # key is the relation like "mother", values  a list of person object
+        self.relation_dict = {}  # key is the relation like "mother", values a list of person object
         self.is_alive = is_alive
     
     @property
@@ -56,4 +56,17 @@ class Person:
             month + " " + birthday + " , Age: " + str(self.age) + ", Occupation: " +\
             self.occupation + ", Is Alive: " + str(self.is_alive) + " , Immediate Family Relations: " +\
             string
-
+    
+    def to_dict(self):
+        """Convert the Person object to a dictionary for JSON serialization."""
+        return {
+            "name": self.name,
+            "birthdate": self.birthdate,
+            "gender": self.gender,
+            "occupation": self.occupation,
+            "is_alive": self.is_alive,
+            "relation_dict": {
+                relation: [relative.name for relative in relatives]
+                for relation, relatives in self.relation_dict.items()
+            }
+        }

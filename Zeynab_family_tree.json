@@ -1,0 +1,75 @@
+{
+    "Zeynab": {
+        "name": "Zeynab",
+        "birthdate": "09-11-1999",
+        "gender": "F",
+        "occupation": "Student",
+        "is_alive": true,
+        "relation_dict": {
+            "mother": [
+                "Alice"
+            ]
+        }
+    },
+    "Alice": {
+        "name": "Alice",
+        "birthdate": "12-12-1950",
+        "gender": "F",
+        "occupation": "Unknown",
+        "is_alive": true,
+        "relation_dict": {
+            "children": [
+                "Zeynab"
+            ],
+            "father": [
+                "Peter"
+            ],
+            "sibling": [
+                "Grace"
+            ]
+        }
+    },
+    "Grace": {
+        "name": "Grace",
+        "birthdate": "12-12-1950",
+        "gender": "F",
+        "occupation": "Unknown",
+        "is_alive": true,
+        "relation_dict": {
+            "father": [
+                "Peter"
+            ],
+            "sibling": [
+                "Alice"
+            ],
+            "children": [
+                "Lucy"
+            ]
+        }
+    },
+    "Lucy": {
+        "name": "Lucy",
+        "birthdate": "12-12-2000",
+        "gender": "F",
+        "occupation": "Student",
+        "is_alive": true,
+        "relation_dict": {
+            "mother": [
+                "Grace"
+            ]
+        }
+    },
+    "Peter": {
+        "name": "Peter",
+        "birthdate": "12-12-1900",
+        "gender": "M",
+        "occupation": "Unknown",
+        "is_alive": true,
+        "relation_dict": {
+            "children": [
+                "Alice",
+                "Grace"
+            ]
+        }
+    }
+}
