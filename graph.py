@@ -12,10 +12,10 @@ def main():
     print("Create grandpa: ")
     grandpa = create_person()
     
-    me.add_family_member("mother", mom)
-    mom.add_family_member("children", me)
-    mom.add_family_member("father", grandpa)
-    grandpa.add_family_member("children", mom)
+    me.add_relation("mother", mom)
+    mom.add_relation("children", me)
+    mom.add_relation("father", grandpa)
+    grandpa.add_relation("children", mom)
 
     print("Me: \n", me)
     print("Mom: \n", mom)

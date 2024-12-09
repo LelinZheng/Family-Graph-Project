@@ -2,30 +2,43 @@ from datetime import datetime
 
 class Person:
     def __init__(self, name, birthdate, gender, occupation="Unknown", is_alive=True):
+        """
+         Initialize the class Person, which stores information of a person in the family tree.
+        The information includes the person's name, date of birth, gender, occupation (which is
+        set as unknown by default), also a boolean attribute to indicate whether the person is alive.
+        """
         self.name = name
         self.birthdate = birthdate  # DD-MM-YYYY
         self.gender = gender
         self.occupation = occupation
-        self.relation_dict = {}  # key is the relation like "mother", values a list of person object
+        self.relation_dict = {}  # key is the relation like "mother", values a list of person object,
         self.is_alive = is_alive
-    
+
     @property
     def age(self):
+        """
+        Function to set the person's age by subtracting the current year by the year of birth
+        so that the program updates the age by itself
+        """
         birthyear = int(self.birthdate.split("-")[-1])
         current_year = datetime.now().year
         age = current_year - birthyear
         return age
-    
+
+    # Function to update the person's gender
     def update_gender(self, new_gender):
         self.gender = new_gender
-    
-    def update_is_alive(self, new_is_alive):  # new_is_alive must be True or False
-        self.is_alive = new_is_alive
 
+    # Function to update the person's living status, new_is_alive should be a boolean statement
+    def update_is_alive(self, new_is_alive):
+        self.is_alive = True if new_is_alive else False
+
+    # Function to update the person's occupation
     def update_occupation(self, new_occupation):
         self.occupation = new_occupation
-    
-    def add_family_member(self, relation, new_person):
+
+    # Function to add a relation of a family member
+    def add_relation(self, relation, new_person):
         # Using a person object to add
         if relation not in self.relation_dict:
             self.relation_dict[relation] = [new_person]
@@ -38,7 +51,8 @@ class Person:
     #         for person in people:
     #             if target_person_name == person.name:
     #                 return person
-    
+
+    # Store the person object's information in string for printing
     def __str__(self):
         string = ""
         for (relation, people) in self.relation_dict.items():
