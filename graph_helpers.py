@@ -1,3 +1,5 @@
+# Graphs can stay here or go into helper functions
+
 import networkx as nx
 import matplotlib.pyplot as plt
 

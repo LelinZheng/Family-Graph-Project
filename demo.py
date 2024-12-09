@@ -2,15 +2,16 @@ from person import Person
 from collections import deque
 import json
 
-
 def main():
     family_dict = {}
+
+    # Zeynab could change the people in the demo family, starting from this line
     me = Person("Zeynab", "09-11-1999", "F", "Student")
     mom = Person("Alice", "12-12-1950", "F", "Unknown")
     aunt = Person("Grace", "12-12-1950", "F", "Unknown")
     cousin = Person("Lucy", "12-12-2000", "F", "Student")
     grandpa = Person("Peter", "12-12-1900", "M", "Unknown")
-    
+
     me.add_relation("mother", mom)
     mom.add_relation("children", me)
     mom.add_relation("father", grandpa)
@@ -27,17 +28,16 @@ def main():
     print("Aunt:\n", aunt)
     print("Cousin:\n", cousin)
     print("Grandpa:\n", grandpa)
-    
+
     add_person(me, family_dict)
     add_person(mom, family_dict)
     add_person(aunt, family_dict)
     add_person(cousin, family_dict)
     add_person(grandpa, family_dict)
 
-    print_family_dict(family_dict)
-
     # Save to JSON
     save_family_to_json(family_dict)
+    # Down to this line
     loaded_family_dict = load_family_from_json()  # Load from JSON
 
     # Verify loaded data
