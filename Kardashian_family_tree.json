@@ -1,0 +1,497 @@
+{
+    "Kim Kardashian": {
+        "name": "Kim Kardashian",
+        "birthdate": "21-10-1980",
+        "gender": "F",
+        "occupation": "model",
+        "is_alive": true,
+        "relation_dict": {
+            "children": [
+                "North West",
+                "Saint West",
+                "Chicago West",
+                "Psalm West"
+            ],
+            "partner": [
+                "Kanye West"
+            ],
+            "sibling": [
+                "Kourtney Kardashian",
+                "Khloe Kardashian",
+                "Rob Kardashian",
+                "Kendall Jenner",
+                "Kylie Jenner"
+            ],
+            "mom": [
+                "Kris Jenner"
+            ],
+            "dad": [
+                "Robert Kardashian"
+            ]
+        }
+    },
+    "Kris Jenner": {
+        "name": "Kris Jenner",
+        "birthdate": "05-11-1955",
+        "gender": "F",
+        "occupation": "manager",
+        "is_alive": true,
+        "relation_dict": {
+            "partner": [
+                "Robert Kardashian",
+                "Caitlyn (Bruce) Jenner"
+            ],
+            "children": [
+                "Kim Kardashian",
+                "Kourtney Kardashian",
+                "Khloe Kardashian",
+                "Rob Kardashian",
+                "Kendall Jenner",
+                "Kylie Jenner"
+            ]
+        }
+    },
+    "Robert Kardashian": {
+        "name": "Robert Kardashian",
+        "birthdate": "22-02-1944",
+        "gender": "M",
+        "occupation": "lawyer",
+        "is_alive": false,
+        "relation_dict": {
+            "partner": [
+                "Kris Jenner"
+            ],
+            "children": [
+                "Kim Kardashian",
+                "Kourtney Kardashian",
+                "Khloe Kardashian",
+                "Rob Kardashian"
+            ]
+        }
+    },
+    "Kourtney Kardashian": {
+        "name": "Kourtney Kardashian",
+        "birthdate": "18-04-1979",
+        "gender": "F",
+        "occupation": "businesswoman",
+        "is_alive": true,
+        "relation_dict": {
+            "children": [
+                "Mason Disick",
+                "Penelope Disick",
+                "Reign Disick"
+            ],
+            "partner": [
+                "Scott Disick",
+                "Travis Barker "
+            ],
+            "sibling": [
+                "Kim Kardashian",
+                "Khloe Kardashian",
+                "Rob Kardashian",
+                "Kendall Jenner",
+                "Kylie Jenner"
+            ],
+            "mom": [
+                "Kris Jenner"
+            ],
+            "dad": [
+                "Robert Kardashian"
+            ]
+        }
+    },
+    "Khloe Kardashian": {
+        "name": "Khloe Kardashian",
+        "birthdate": "27-06-1984",
+        "gender": "F",
+        "occupation": "businesswoman",
+        "is_alive": true,
+        "relation_dict": {
+            "children": [
+                "True Thompson"
+            ],
+            "partner": [
+                "Lamar Odom",
+                "Tristan Thompson"
+            ],
+            "sibling": [
+                "Kim Kardashian",
+                "Kourtney Kardashian",
+                "Rob Kardashian",
+                "Kendall Jenner",
+                "Kylie Jenner"
+            ],
+            "mom": [
+                "Kris Jenner"
+            ],
+            "dad": [
+                "Robert Kardashian"
+            ]
+        }
+    },
+    "Rob Kardashian": {
+        "name": "Rob Kardashian",
+        "birthdate": "17-03-1987",
+        "gender": "M",
+        "occupation": "businessman",
+        "is_alive": true,
+        "relation_dict": {
+            "children": [
+                "Dream Kardashian"
+            ],
+            "partner": [
+                "Blac Chyna"
+            ],
+            "sibling": [
+                "Kim Kardashian",
+                "Kourtney Kardashian",
+                "Khloe Kardashian",
+                "Kendall Jenner",
+                "Kylie Jenner"
+            ],
+            "mom": [
+                "Kris Jenner"
+            ],
+            "dad": [
+                "Robert Kardashian"
+            ]
+        }
+    },
+    "Kendall Jenner": {
+        "name": "Kendall Jenner",
+        "birthdate": "03-11-1995",
+        "gender": "F",
+        "occupation": "model",
+        "is_alive": true,
+        "relation_dict": {
+            "sibling": [
+                "Kim Kardashian",
+                "Kourtney Kardashian",
+                "Khloe Kardashian",
+                "Rob Kardashian",
+                "Kylie Jenner"
+            ],
+            "mom": [
+                "Kris Jenner"
+            ],
+            "dad": [
+                "Caitlyn (Bruce) Jenner"
+            ]
+        }
+    },
+    "Kylie Jenner": {
+        "name": "Kylie Jenner",
+        "birthdate": "10-08-1997",
+        "gender": "F",
+        "occupation": "businesswoman",
+        "is_alive": true,
+        "relation_dict": {
+            "children": [
+                "Stormi Webster",
+                "Aire Webster"
+            ],
+            "partner": [
+                "Travis Scott"
+            ],
+            "sibling": [
+                "Kim Kardashian",
+                "Kourtney Kardashian",
+                "Khloe Kardashian",
+                "Rob Kardashian",
+                "Kendall Jenner"
+            ],
+            "mom": [
+                "Kris Jenner"
+            ],
+            "dad": [
+                "Caitlyn (Bruce) Jenner"
+            ]
+        }
+    },
+    "Caitlyn (Bruce) Jenner": {
+        "name": "Caitlyn (Bruce) Jenner",
+        "birthdate": "28-10-1949",
+        "gender": "M->F",
+        "occupation": " athlete",
+        "is_alive": true,
+        "relation_dict": {
+            "partner": [
+                "Kris Jenner"
+            ],
+            "children": [
+                "Kendall Jenner",
+                "Kylie Jenner"
+            ]
+        }
+    },
+    "North West": {
+        "name": "North West",
+        "birthdate": "15-06-2013",
+        "gender": "F",
+        "occupation": "Unknown",
+        "is_alive": true,
+        "relation_dict": {
+            "mother": [
+                "Kim Kardashian"
+            ],
+            "father": [
+                "Kanye West"
+            ]
+        }
+    },
+    "Saint West": {
+        "name": "Saint West",
+        "birthdate": "05-12-2015",
+        "gender": "M",
+        "occupation": "Unknown",
+        "is_alive": true,
+        "relation_dict": {
+            "mother": [
+                "Kim Kardashian"
+            ],
+            "father": [
+                "Kanye West"
+            ]
+        }
+    },
+    "Chicago West": {
+        "name": "Chicago West",
+        "birthdate": "15-01-2018",
+        "gender": "F",
+        "occupation": "Unknown",
+        "is_alive": true,
+        "relation_dict": {
+            "mother": [
+                "Kim Kardashian"
+            ],
+            "father": [
+                "Kanye West"
+            ]
+        }
+    },
+    "Psalm West": {
+        "name": "Psalm West",
+        "birthdate": "09-05-2019",
+        "gender": "M",
+        "occupation": "Unknown",
+        "is_alive": true,
+        "relation_dict": {
+            "mother": [
+                "Kim Kardashian"
+            ],
+            "father": [
+                "Kanye West"
+            ]
+        }
+    },
+    "Mason Disick": {
+        "name": "Mason Disick",
+        "birthdate": "14-12-2009",
+        "gender": "M",
+        "occupation": "Unknown",
+        "is_alive": true,
+        "relation_dict": {
+            "mother": [
+                "Kourtney Kardashian"
+            ],
+            "father": [
+                "Scott Disick"
+            ]
+        }
+    },
+    "Penelope Disick": {
+        "name": "Penelope Disick",
+        "birthdate": "05-12-2015",
+        "gender": "F",
+        "occupation": "Unknown",
+        "is_alive": true,
+        "relation_dict": {
+            "mother": [
+                "Kourtney Kardashian"
+            ],
+            "father": [
+                "Scott Disick"
+            ]
+        }
+    },
+    "Reign Disick": {
+        "name": "Reign Disick",
+        "birthdate": "15-01-2018",
+        "gender": "M",
+        "occupation": "Unknown",
+        "is_alive": true,
+        "relation_dict": {
+            "mother": [
+                "Kourtney Kardashian"
+            ],
+            "father": [
+                "Scott Disick"
+            ]
+        }
+    },
+    "True Thompson": {
+        "name": "True Thompson",
+        "birthdate": "12-04-2018",
+        "gender": "F",
+        "occupation": "Unknown",
+        "is_alive": true,
+        "relation_dict": {
+            "mother": [
+                "Khloe Kardashian"
+            ],
+            "father": [
+                "Tristan Thompson"
+            ]
+        }
+    },
+    "Dream Kardashian": {
+        "name": "Dream Kardashian",
+        "birthdate": "10-11-2016",
+        "gender": "F",
+        "occupation": "Unknown",
+        "is_alive": true,
+        "relation_dict": {
+            "father": [
+                "Rob Kardashian"
+            ],
+            "mother": [
+                "Blac Chyna"
+            ]
+        }
+    },
+    "Stormi Webster": {
+        "name": "Stormi Webster",
+        "birthdate": "01-02-2018",
+        "gender": "F",
+        "occupation": "Unknown",
+        "is_alive": true,
+        "relation_dict": {
+            "mother": [
+                "Kylie Jenner"
+            ],
+            "father": [
+                "Travis Scott"
+            ]
+        }
+    },
+    "Aire Webster": {
+        "name": "Aire Webster",
+        "birthdate": "02-02-2022",
+        "gender": "M",
+        "occupation": "Unknown",
+        "is_alive": true,
+        "relation_dict": {
+            "mother": [
+                "Kylie Jenner"
+            ],
+            "father": [
+                "Travis Scott"
+            ]
+        }
+    },
+    "Kanye West": {
+        "name": "Kanye West",
+        "birthdate": "08-06-1977",
+        "gender": "M",
+        "occupation": "rapper",
+        "is_alive": true,
+        "relation_dict": {
+            "children": [
+                "North West",
+                "Saint West",
+                "Chicago West",
+                "Psalm West"
+            ],
+            "partner": [
+                "Kim Kardashian"
+            ]
+        }
+    },
+    "Scott Disick": {
+        "name": "Scott Disick",
+        "birthdate": "26-05-1983",
+        "gender": "M",
+        "occupation": "businessman",
+        "is_alive": true,
+        "relation_dict": {
+            "children": [
+                "Mason Disick",
+                "Penelope Disick",
+                "Reign Disick"
+            ],
+            "partner": [
+                "Kourtney Kardashian"
+            ]
+        }
+    },
+    "Travis Barker ": {
+        "name": "Travis Barker ",
+        "birthdate": "14-11-1975",
+        "gender": "M",
+        "occupation": "musician",
+        "is_alive": true,
+        "relation_dict": {
+            "partner": [
+                "Kourtney Kardashian"
+            ]
+        }
+    },
+    "Lamar Odom": {
+        "name": "Lamar Odom",
+        "birthdate": "06-11-1979",
+        "gender": "M",
+        "occupation": "NBA player",
+        "is_alive": true,
+        "relation_dict": {
+            "partner": [
+                "Khloe Kardashian"
+            ]
+        }
+    },
+    "Tristan Thompson": {
+        "name": "Tristan Thompson",
+        "birthdate": "13-03-1991",
+        "gender": "M",
+        "occupation": "NBA player",
+        "is_alive": true,
+        "relation_dict": {
+            "children": [
+                "True Thompson"
+            ],
+            "partner": [
+                "Khloe Kardashian"
+            ]
+        }
+    },
+    "Blac Chyna": {
+        "name": "Blac Chyna",
+        "birthdate": "11-05-1988",
+        "gender": "F",
+        "occupation": "model",
+        "is_alive": true,
+        "relation_dict": {
+            "children": [
+                "Dream Kardashian"
+            ],
+            "partner": [
+                "Rob Kardashian"
+            ]
+        }
+    },
+    "Travis Scott": {
+        "name": "Travis Scott",
+        "birthdate": "30-04-1991",
+        "gender": "M",
+        "occupation": "musician",
+        "is_alive": true,
+        "relation_dict": {
+            "children": [
+                "Stormi Webster",
+                "Aire Webster"
+            ],
+            "partner": [
+                "Kylie Jenner"
+            ]
+        }
+    }
+}

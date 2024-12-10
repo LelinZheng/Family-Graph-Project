@@ -11,6 +11,7 @@ def main():
     aunt = Person("Grace", "12-12-1950", "F", "Unknown")
     cousin = Person("Lucy", "12-12-2000", "F", "Student")
     grandpa = Person("Peter", "12-12-1900", "M", "Unknown")
+    
 
     me.add_relation("mother", mom)
     mom.add_relation("children", me)
@@ -34,6 +35,7 @@ def main():
     add_person(aunt, family_dict)
     add_person(cousin, family_dict)
     add_person(grandpa, family_dict)
+
 
     # Save to JSON
     save_family_to_json(family_dict)
@@ -69,10 +71,13 @@ def add_person(person, family_dict):
 def delete_person(person, family_dict):
     if person.name in family_dict:
         family_dict.pop(person.name)
-    for member in family_dict.keys():
-        for relatives in member.relation_dict.values():
-            if person in relatives:
-                relatives.remove(person)
+        for member in family_dict.values():
+            for relation, relatives in member.relation_dict.items():
+                if person in relatives:
+                    member.relation_dict[relation].pop(person)
+                    # check if there is any other people under this relation
+                    if not member.relation_dict[relation]:
+                        del member.relation_dict[relation]
     return family_dict
 
 # Function to print the current family tree
@@ -81,8 +86,8 @@ def print_family_dict(family_dict):
     for key, value in family_dict.items():
         print(f'{key},{value}')
 
-def search_for_person(first_person, second_person):
-    """BFS searching the relations between two people in a family tree, take two Person objects as parameter"""
+def search_for_person(first_person, second_person_name):
+    """BFS searching the relations between two people in a family tree, take 1 Person object and 1 name as parameter"""
     relationship_stack = deque()
     relationship_stack.append([first_person])
 
@@ -98,11 +103,11 @@ def search_for_person(first_person, second_person):
                     visited.add(relative)
                     new_path = curr_path.copy()
                     new_path.append(relative)
-                    if relative.name == second_person:
+                    if relative.name == second_person_name:
                         return print_list_of_person(new_path)
                     relationship_stack.append(new_path)
 
-    print(f"{second_person} cannot be founded to connect to {first_person.name}")
+    print(f"{second_person_name} cannot be founded to connect to {first_person.name}")
 
 # Function to find the relation between two immediate family members
 def find_immediate_relation(first_person, second_person):
@@ -115,11 +120,8 @@ def find_immediate_relation(first_person, second_person):
 def print_list_of_person(people_list):
     out_put = ""
     for i in range(len(people_list)-1):
-        if i == 0:
-            out_put = people_list[0].name + f"('s {find_immediate_relation(people_list[0],people_list[1])})"
-        else:
-            out_put += "->" + people_list[i].name + f"('s {find_immediate_relation(people_list[i],people_list[i+1])})"
-    out_put += "->" + people_list[-1].name
+        out_put += people_list[i].name + f"('s {find_immediate_relation(people_list[i],people_list[i+1])})" + "->"
+    out_put += people_list[-1].name
     print(out_put)
     print(f"The relationship distance from {people_list[0].name} to {people_list[-1].name} is {len(people_list)-1} step(s).")
 

@@ -1,5 +1,6 @@
 from datetime import datetime
 
+
 class Person:
     def __init__(self, name, birthdate, gender, occupation="Unknown", is_alive=True):
         """
@@ -25,35 +26,30 @@ class Person:
         age = current_year - birthyear
         return age
 
-    # Function to update the person's gender
     def update_gender(self, new_gender):
         self.gender = new_gender
 
-    # Function to update the person's living status, new_is_alive should be a boolean statement
     def update_is_alive(self, new_is_alive):
         self.is_alive = True if new_is_alive else False
 
-    # Function to update the person's occupation
     def update_occupation(self, new_occupation):
         self.occupation = new_occupation
 
-    # Function to add a relation of a family member
     def add_relation(self, relation, new_person):
-        # Using a person object to add
+        """add a relation of a family member using person object"""
+        for rel, person_list in self.relation_dict.items():
+            if new_person in person_list:
+                print(f"{new_person.name} is already related to {self.name}." +
+                      f"{new_person.name} is {self.name} 's {rel}")
+                return -1
+
         if relation not in self.relation_dict:
             self.relation_dict[relation] = [new_person]
         else:
             self.relation_dict[relation].append(new_person)
-    
-    # def search_family_relation(self, target_person_name):
-    #     """Searching for person that match this name"""
-    #     for (relation, people) in self.relation_dict.items():
-    #         for person in people:
-    #             if target_person_name == person.name:
-    #                 return person
 
-    # Store the person object's information in string for printing
     def __str__(self):
+        """Store the person object's information in string for printing"""
         string = ""
         for (relation, people) in self.relation_dict.items():
             string += relation + ": "
@@ -70,7 +66,7 @@ class Person:
             month + " " + birthday + " , Age: " + str(self.age) + ", Occupation: " +\
             self.occupation + ", Is Alive: " + str(self.is_alive) + " , Immediate Family Relations: " +\
             string
-    
+
     def to_dict(self):
         """Convert the Person object to a dictionary for JSON serialization."""
         return {
