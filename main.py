@@ -8,6 +8,8 @@ after the user provides a family tree
 2. delete a person and all their relations from a family tree
 3. update a person's information
 4. search the relationship (path) between two people by their names
+5. search up a person's information
+6. get a graph of the family
 
 after the user is done with all the functions
 save the data into a new json file or the old json file

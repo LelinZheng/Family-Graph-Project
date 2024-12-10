@@ -2,23 +2,27 @@ from datetime import datetime
 
 
 class Person:
-    def __init__(self, name, birthdate, gender, occupation="Unknown", is_alive=True):
+    def __init__(self, name, birthdate, gender, occupation="Unknown",
+                 is_alive=True):
         """
-         Initialize the class Person, which stores information of a person in the family tree.
-        The information includes the person's name, date of birth, gender, occupation (which is
-        set as unknown by default), also a boolean attribute to indicate whether the person is alive.
+        Initialize the class Person, which stores information of a person
+        in the family tree. The information includes the person's name,
+        date of birth, gender, occupation (which is set as unknown by default),
+        also a boolean attribute to indicate whether the person is alive.
         """
         self.name = name
         self.birthdate = birthdate  # DD-MM-YYYY
         self.gender = gender
         self.occupation = occupation
-        self.relation_dict = {}  # key is the relation like "mother", values a list of person object,
+        self.relation_dict = {}
+        # key is the relation like "mother", value is a list of person object
         self.is_alive = is_alive
 
     @property
     def age(self):
         """
-        Function to set the person's age by subtracting the current year by the year of birth
+        Function to set the person's age by subtracting the current year
+        by the year of birth,
         so that the program updates the age by itself
         """
         birthyear = int(self.birthdate.split("-")[-1])
@@ -52,20 +56,29 @@ class Person:
         """Store the person object's information in string for printing"""
         string = ""
         for (relation, people) in self.relation_dict.items():
-            string += relation + ": "
+            string += " " + relation + ":"
             for person in people:
-                string += person.name  + " "
-            string += " ; "
+                string += " " + person.name
+            string += ";"
+        if not string:
+            string = " None"
         birthday = self.birthdate.split("-")[0]
         birthmonth = int(self.birthdate.split("-")[1])
-        month_list = {1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr", 
+        month_list = {1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr",
                       5: "May", 6: "June", 7: "July", 8: "Aug",
                       9: "Sep", 10: "Oct", 11: "Nov", 12: "Dec"}
         month = month_list[birthmonth]
-        return "Name: " + self.name + ", Gender: " + self.gender + ", Birthday: " +\
-            month + " " + birthday + " , Age: " + str(self.age) + ", Occupation: " +\
-            self.occupation + ", Is Alive: " + str(self.is_alive) + " , Immediate Family Relations: " +\
-            string
+        if self.is_alive:
+            return "Name: " + self.name + ", Gender: " + self.gender +\
+                   ", Birthday: " + month + " " + birthday + ", Age: " +\
+                    str(self.age) + ", Occupation: " + self.occupation +\
+                    ", Immediate Family Relations:" + string
+        else:
+            return "Name: " + self.name + " (Deceased)" + ", Gender: " +\
+                   self.gender + ", Birthday: " + month + " " + birthday +\
+                   ", Age: " + str(self.age) + ", Occupation: " +\
+                   self.occupation + ", Immediate Family Relations:" +\
+                   string
 
     def to_dict(self):
         """Convert the Person object to a dictionary for JSON serialization."""

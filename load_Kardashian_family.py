@@ -3,7 +3,7 @@ from family import Family
 
 def main():
 
-    family = Family("The Kardashian Family")
+    family = Family("Kardashian")
     family.create_person_in_fam("Kim Kardashian", "21-10-1980", "F", "model")
     family.create_person_in_fam("Kris Jenner", "05-11-1955", "F", "manager")
     family.create_person_in_fam("Robert Kardashian", "22-02-1944", "M", "lawyer", False)
@@ -44,6 +44,12 @@ def main():
     family.add_relation("Kanye West", "children", "Chicago West")
     family.add_relation("Kim Kardashian", "children", "Psalm West")
     family.add_relation("Kanye West", "children", "Psalm West")
+    family.add_relation("North West", "sibling", "Saint West")
+    family.add_relation("North West", "sibling", "Chicago West")
+    family.add_relation("North West", "sibling", "Psalm West")
+    family.add_relation("Saint West", "sibling", "Chicago West")
+    family.add_relation("Saint West", "sibling", "Psalm West")
+    family.add_relation("Chicago West", "sibling", "Psalm West")
 
     # Kourtney Kardashian and Scott Disick's children
     family.add_relation("Kourtney Kardashian", "children", "Mason Disick")
@@ -52,6 +58,9 @@ def main():
     family.add_relation("Scott Disick", "children", "Penelope Disick")
     family.add_relation("Kourtney Kardashian", "children", "Reign Disick")
     family.add_relation("Scott Disick", "children", "Reign Disick")
+    family.add_relation("Mason Disick", "sibling", "Penelope Disick")
+    family.add_relation("Mason Disick", "sibling", "Reign Disick")
+    family.add_relation("Penelope Disick", "sibling", "Reign Disick")
 
     # Khloé Kardashian and Tristan Thompson's child
     family.add_relation("Khloe Kardashian", "children", "True Thompson")
@@ -66,6 +75,7 @@ def main():
     family.add_relation("Travis Scott", "children", "Stormi Webster")
     family.add_relation("Kylie Jenner", "children", "Aire Webster")
     family.add_relation("Travis Scott", "children", "Aire Webster")
+    family.add_relation("Stormi Webster", "sibling", "Aire Webster")
 
     # Partner relationships
     family.add_relation("Kris Jenner", "partner", "Robert Kardashian")
@@ -100,24 +110,27 @@ def main():
     family.add_relation("Kendall Jenner", "sibling", "Kylie Jenner")
 
     # Parent-child relationships
-    family.add_relation("Kim Kardashian", "mom", "Kris Jenner")
-    family.add_relation("Kourtney Kardashian", "mom", "Kris Jenner")
-    family.add_relation("Khloe Kardashian", "mom", "Kris Jenner")
-    family.add_relation("Rob Kardashian", "mom", "Kris Jenner")
-    family.add_relation("Kendall Jenner", "mom", "Kris Jenner")
-    family.add_relation("Kylie Jenner", "mom", "Kris Jenner")
+    family.add_relation("Kim Kardashian", "mother", "Kris Jenner")
+    family.add_relation("Kourtney Kardashian", "mother", "Kris Jenner")
+    family.add_relation("Khloe Kardashian", "mother", "Kris Jenner")
+    family.add_relation("Rob Kardashian", "mother", "Kris Jenner")
+    family.add_relation("Kendall Jenner", "mother", "Kris Jenner")
+    family.add_relation("Kylie Jenner", "mother", "Kris Jenner")
 
-    family.add_relation("Kim Kardashian", "dad", "Robert Kardashian")
-    family.add_relation("Kourtney Kardashian", "dad", "Robert Kardashian")
-    family.add_relation("Khloe Kardashian", "dad", "Robert Kardashian")
-    family.add_relation("Rob Kardashian", "dad", "Robert Kardashian")
+    family.add_relation("Kim Kardashian", "father", "Robert Kardashian")
+    family.add_relation("Kourtney Kardashian", "father", "Robert Kardashian")
+    family.add_relation("Khloe Kardashian", "father", "Robert Kardashian")
+    family.add_relation("Rob Kardashian", "father", "Robert Kardashian")
 
-    family.add_relation("Kendall Jenner", "dad", "Caitlyn (Bruce) Jenner")
-    family.add_relation("Kylie Jenner", "dad", "Caitlyn (Bruce) Jenner")
+    family.add_relation("Kendall Jenner", "father", "Caitlyn (Bruce) Jenner")
+    family.add_relation("Kylie Jenner", "father", "Caitlyn (Bruce) Jenner")
 
     family.save_family_to_json("Kardashian_family_tree.json")
 
     family.search_for_person("North West", "Lamar Odom")
+    family.print_family_dict()
+    family.get_person_info("North West")
+    family.show_immediate_family("North West")
 
 
 main()

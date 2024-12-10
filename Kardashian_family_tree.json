@@ -22,10 +22,10 @@
                 "Kendall Jenner",
                 "Kylie Jenner"
             ],
-            "mom": [
+            "mother": [
                 "Kris Jenner"
             ],
-            "dad": [
+            "father": [
                 "Robert Kardashian"
             ]
         }
@@ -92,10 +92,10 @@
                 "Kendall Jenner",
                 "Kylie Jenner"
             ],
-            "mom": [
+            "mother": [
                 "Kris Jenner"
             ],
-            "dad": [
+            "father": [
                 "Robert Kardashian"
             ]
         }
@@ -121,10 +121,10 @@
                 "Kendall Jenner",
                 "Kylie Jenner"
             ],
-            "mom": [
+            "mother": [
                 "Kris Jenner"
             ],
-            "dad": [
+            "father": [
                 "Robert Kardashian"
             ]
         }
@@ -149,10 +149,10 @@
                 "Kendall Jenner",
                 "Kylie Jenner"
             ],
-            "mom": [
+            "mother": [
                 "Kris Jenner"
             ],
-            "dad": [
+            "father": [
                 "Robert Kardashian"
             ]
         }
@@ -171,10 +171,10 @@
                 "Rob Kardashian",
                 "Kylie Jenner"
             ],
-            "mom": [
+            "mother": [
                 "Kris Jenner"
             ],
-            "dad": [
+            "father": [
                 "Caitlyn (Bruce) Jenner"
             ]
         }
@@ -200,10 +200,10 @@
                 "Rob Kardashian",
                 "Kendall Jenner"
             ],
-            "mom": [
+            "mother": [
                 "Kris Jenner"
             ],
-            "dad": [
+            "father": [
                 "Caitlyn (Bruce) Jenner"
             ]
         }
@@ -236,6 +236,11 @@
             ],
             "father": [
                 "Kanye West"
+            ],
+            "sibling": [
+                "Saint West",
+                "Chicago West",
+                "Psalm West"
             ]
         }
     },
@@ -251,6 +256,11 @@
             ],
             "father": [
                 "Kanye West"
+            ],
+            "sibling": [
+                "North West",
+                "Chicago West",
+                "Psalm West"
             ]
         }
     },
@@ -266,6 +276,11 @@
             ],
             "father": [
                 "Kanye West"
+            ],
+            "sibling": [
+                "North West",
+                "Saint West",
+                "Psalm West"
             ]
         }
     },
@@ -281,6 +296,11 @@
             ],
             "father": [
                 "Kanye West"
+            ],
+            "sibling": [
+                "North West",
+                "Saint West",
+                "Chicago West"
             ]
         }
     },
@@ -296,6 +316,10 @@
             ],
             "father": [
                 "Scott Disick"
+            ],
+            "sibling": [
+                "Penelope Disick",
+                "Reign Disick"
             ]
         }
     },
@@ -311,6 +335,10 @@
             ],
             "father": [
                 "Scott Disick"
+            ],
+            "sibling": [
+                "Mason Disick",
+                "Reign Disick"
             ]
         }
     },
@@ -326,6 +354,10 @@
             ],
             "father": [
                 "Scott Disick"
+            ],
+            "sibling": [
+                "Mason Disick",
+                "Penelope Disick"
             ]
         }
     },
@@ -371,6 +403,9 @@
             ],
             "father": [
                 "Travis Scott"
+            ],
+            "sibling": [
+                "Aire Webster"
             ]
         }
     },
@@ -386,6 +421,9 @@
             ],
             "father": [
                 "Travis Scott"
+            ],
+            "sibling": [
+                "Stormi Webster"
             ]
         }
     },
