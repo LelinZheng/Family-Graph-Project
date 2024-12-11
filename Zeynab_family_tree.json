@@ -7,68 +7,87 @@
         "is_alive": true,
         "relation_dict": {
             "mother": [
-                "Alice"
-            ]
-        }
-    },
-    "Alice": {
-        "name": "Alice",
-        "birthdate": "12-12-1950",
-        "gender": "F",
-        "occupation": "doctor",
-        "is_alive": true,
-        "relation_dict": {
-            "children": [
-                "Zeynab"
-            ],
-            "father": [
-                "Peter"
+                "Sigge"
             ],
             "sibling": [
-                "Grace"
+                "Zekeya"
             ]
         }
     },
-    "Grace": {
-        "name": "Grace",
-        "birthdate": "12-12-1950",
-        "gender": "F",
-        "occupation": "Unknown",
-        "is_alive": true,
-        "relation_dict": {
-            "father": [
-                "Peter"
-            ],
-            "sibling": [
-                "Alice"
-            ],
-            "children": [
-                "Lucy"
-            ]
-        }
-    },
-    "Lucy": {
-        "name": "Lucy",
-        "birthdate": "12-12-2000",
+    "Zekeya": {
+        "name": "Zekeya",
+        "birthdate": "01-04-2002",
         "gender": "F",
         "occupation": "Student",
         "is_alive": true,
         "relation_dict": {
             "mother": [
-                "Grace"
+                "Sigge"
+            ],
+            "sibling": [
+                "Zeynab"
             ]
         }
     },
-    "Peter": {
-        "name": "Peter",
-        "birthdate": "12-12-1900",
+    "Sigge": {
+        "name": "Sigge",
+        "birthdate": "23-10-1962",
+        "gender": "F",
+        "occupation": "Nurse",
+        "is_alive": true,
+        "relation_dict": {
+            "children": [
+                "Zeynab",
+                "Zekeya"
+            ],
+            "father": [
+                "Jedd"
+            ],
+            "sibling": [
+                "Simagne"
+            ]
+        }
+    },
+    "Simagne": {
+        "name": "Simagne",
+        "birthdate": "09-11-1958",
+        "gender": "F",
+        "occupation": "Jeweler",
+        "is_alive": true,
+        "relation_dict": {
+            "father": [
+                "Jedd"
+            ],
+            "sibling": [
+                "Sigge"
+            ],
+            "children": [
+                "Mimi"
+            ]
+        }
+    },
+    "Mimi": {
+        "name": "Mimi",
+        "birthdate": "04-09-1989",
+        "gender": "F",
+        "occupation": "Manager",
+        "is_alive": true,
+        "relation_dict": {
+            "mother": [
+                "Simagne"
+            ]
+        }
+    },
+    "Jedd": {
+        "name": "Jedd",
+        "birthdate": "06-08-1939",
         "gender": "M",
         "occupation": "Unknown",
         "is_alive": true,
         "relation_dict": {
             "children": [
-                "Alice",
-                "Grace"
+                "Sigge",
+                "Simagne"
             ]
         }
     }

@@ -4,15 +4,16 @@ import networkx as nx
 import matplotlib.pyplot as plt
 
 G = nx.Graph()
-G.add_edge("Zeynab", "Alice", weight="mom-child")
-G.add_edge("Alice", "Grace", weight="siblings")
-G.add_edge("Alice", "Peter", weight="dad-child")
-G.add_edge("Grace", "Lucy",weight="mom-child")
-G.add_edge("Grace", "Peter",weight="dad-child")
+G.add_edge("Zeynab", "Sigge", weight="mom-child")
+G.add_edge("Sigge", "Simagne", weight="siblings")
+G.add_edge("Sigge", "Jedd", weight="dad-child")
+G.add_edge("Simagne", "Mimi",weight="mom-child")
+G.add_edge("Simagne", "Jedd",weight="dad-child")
 #G.add_edge(4, 5)
 
 # explicitly set positions
-pos = {"Zeynab": (0, 0), "Alice": (2, 1), "Grace": (6, 1), "Peter": (4, 2), "Lucy": (8, 0.00) }
+pos = {"Zeynab": (0, 0), "Sigge": (2, 1), "Simagne": (6, 1),
+       "Jedd": (4, 2), "Mimi": (8, 0.00) }
 
 options = {
     "font_size": 12,

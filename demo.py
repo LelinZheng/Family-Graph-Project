@@ -2,35 +2,49 @@ from person import Person
 from collections import deque
 import json
 
+# This demo file is linked to the Zeynab_family_tree.json file
+
 def main():
     family_dict = {}
 
     # Zeynab could change the people in the demo family, starting from this line
-    me = Person("Zeynab", "09-11-1999", "F", "Student")
-    mom = Person("Alice", "12-12-1950", "F", "Unknown")
-    aunt = Person("Grace", "12-12-1950", "F", "Unknown")
-    cousin = Person("Lucy", "12-12-2000", "F", "Student")
-    grandpa = Person("Peter", "12-12-1900", "M", "Unknown")
+    me = Person("Zeynab", "09-11-1999", "F", "Student", True)
+    mom = Person("Sigge", "23-10-1962", "F", "Nurse", True)
+    aunt = Person("Simagne", "09-11-1958", "F", "Jeweler", True)
+    cousin = Person("Mimi", "04-09-1989", "F", "Manager", True)
+    grandpa = Person("Jedd", "06-08-1939", "M", "Unknown", True)
+    sister = Person("Zekeya", "01-04-2002", "F", "Student", True)
     
 
     me.add_relation("mother", mom)
+    me.add_relation("sibling", sister)
+
+    sister.add_relation("mother", mom)
+    sister.add_relation("sibling", me)
+
     mom.add_relation("children", me)
+    mom.add_relation("children", sister)
     mom.add_relation("father", grandpa)
     mom.add_relation("sibling", aunt)
+
     aunt.add_relation("father", grandpa)
     aunt.add_relation("sibling", mom)
     aunt.add_relation("children", cousin)
+
     cousin.add_relation("mother", aunt)
+
     grandpa.add_relation("children", mom)
     grandpa.add_relation("children", aunt)
 
     print("Me:\n", me)
+    print("Sister:\n", sister)
     print("Mom:\n", mom)
     print("Aunt:\n", aunt)
     print("Cousin:\n", cousin)
     print("Grandpa:\n", grandpa)
 
     add_person(me, family_dict)
+    add_person(sister, family_dict)
     add_person(mom, family_dict)
     add_person(aunt, family_dict)
     add_person(cousin, family_dict)
@@ -48,9 +62,20 @@ def main():
 
     print()
     print("------------BFS Search for Family-----------------")
-    search_for_person(me, "Alice")
-    search_for_person(me, "Peter")
-    search_for_person(me, "Lucy")
+    print()
+
+    print("Search Results for Zeynab:")
+    print()
+    search_for_person(me, "Sigge")
+    search_for_person(me, "Jedd")
+    search_for_person(me, "Mimi")
+    print()
+
+    print("Search Results for Zekeya:")
+    print()
+    search_for_person(sister, "Zeynab")
+    search_for_person(sister, "Simagne")
+    search_for_person(sister, "Jedd")
 
 
 # Function to create a person project to be added to the family tree

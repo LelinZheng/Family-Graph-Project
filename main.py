@@ -18,6 +18,13 @@ from menu import Menu
 
 
 def main():
+    # Welcome Message
+    print("===================================")
+    print("     Family Tree Management")
+    print("===================================")
+    print("Build and visualize your family tree with ease!")
+    print()
+
     menu = Menu()
     menu.run()
 

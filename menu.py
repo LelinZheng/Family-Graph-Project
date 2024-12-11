@@ -13,10 +13,7 @@ class Menu:
         """
         Display the initial menu and get user input
         """
-        menu_display = """
-        Welcome to the Family Tree Management System!
-
-        To get started, please choose one of the following options:
+        menu_display = """To get started, please choose one of the following options:
 
         1. Create a new family
         2. Continue with existing family data
