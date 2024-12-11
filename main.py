@@ -14,19 +14,16 @@ after the user provides a family tree
 after the user is done with all the functions
 save the data into a new json file or the old json file
 """
-from menu import Menu
-
+import menu
+from menu import loop_main_menu
 
 def main():
-    # Welcome Message
-    print("===================================")
-    print("     Family Tree Management")
-    print("===================================")
-    print("Build and visualize your family tree with ease!")
-    print()
+    try:
+        user_family = menu.get_user_family()
+        loop_main_menu(user_family)
 
-    menu = Menu()
-    menu.run()
+    except Exception as err:
+        print(f"An error occurred: {err}. Please restart the program and try again.")
 
-
-main()
+if __name__ == "__main__":
+    main()
