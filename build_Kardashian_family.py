@@ -1,5 +1,5 @@
 from family import Family
-
+import graph
 
 def main():
     """
@@ -80,6 +80,10 @@ def main():
     family.add_relation("Kylie Jenner", "children", "Aire Webster")
     family.add_relation("Travis Scott", "children", "Aire Webster")
     family.add_relation("Stormi Webster", "sibling", "Aire Webster")
+    family.add_relation("Stormi Webster", "mother", "Kylie Jenner")
+    family.add_relation("Stormi Webster", "father", "Travis Scott")
+    family.add_relation("Aire Webster", "mother", "Kylie Jenner")
+    family.add_relation("Aire Webster", "father", "Travis Scott")
 
     # Partner relationships
     family.add_relation("Kris Jenner", "partner", "Robert Kardashian")
@@ -129,12 +133,14 @@ def main():
     family.add_relation("Kendall Jenner", "father", "Caitlyn (Bruce) Jenner")
     family.add_relation("Kylie Jenner", "father", "Caitlyn (Bruce) Jenner")
 
-    family.save_family_to_json("Kardashian_family_tree.json")
+    graph.create_graph(family)
+
+    # family.save_family_to_json("Kardashian_family_tree.json")
 
     family.search_for_person("North West", "Lamar Odom")
     family.print_family_dict()
     family.get_person_info("North West")
     family.show_immediate_family("North West")
 
-
-main()
+if __name__ == '__main__':
+    main()
