@@ -1,7 +1,9 @@
 from family import Family
 from person import Person
+from datetime import datetime
 import os
 import json
+import re
 
 
 class Menu:
@@ -136,11 +138,16 @@ class Menu:
             elif choice == "2":
                 family_name = input("Enter the family name: ").strip()
                 filename = input('Enter the JSON filename or "DEMO" to load: ').strip()
+                
                 if filename.rstrip() == "DEMO":
                     filename = "Kardashian_family_tree.json"
-                self.family = Family(family_name,
-                                     self.load_family_from_json(filename))
-                print(f"The {family_name} family is loaded from {filename}.")
+                
+                family_tree = self.load_family_from_json(filename)
+                self.family = Family(family_name, family_tree)
+                if not family_tree:
+                    print(f"New family '{family_name}' created.")
+                else:
+                    print(f"The {family_name} family is loaded from {filename}.")
                 input("Press Enter to continue...")
             else:
                 print("Invalid option.")
@@ -150,10 +157,11 @@ class Menu:
                 option = self.show_option_menu()
                 if option == "1":
                     name = input("Enter the name of the new person: ")
-                    birthdate = input("Enter the birthdate(DD-MM-YYYY): ")
+                    birthdate = self.get_valid_birthdate()
                     gender = input("Enter the gender (M/F): ")
+                    while gender not in {"F", "M"}:
+                        gender = input("Invalid input. Please enter 'M' for Male or 'F' for Female.")
                     occupation = input("Enter the occupation (optional): ") or "Unknown"
-
                     is_alive_input = input("Is this person alive? (Y/N): ").strip().upper()
                     while is_alive_input not in {"Y", "N"}:
                         print("Invalid input. Please enter 'Y' for Yes or 'N' for No.")
@@ -277,3 +285,18 @@ class Menu:
 
             if remove_more == "N":
                 break
+    
+    def get_valid_birthdate(self):
+        """
+        Helper function to get a valid birthdate input in the format DD-MM-YYYY.
+        """
+        while True:
+            birthdate = input("Enter the birthdate (DD-MM-YYYY): ").strip()
+            if re.match(r"^\d{2}-\d{2}-\d{4}$", birthdate):
+                try:
+                    datetime.strptime(birthdate, "%d-%m-%Y")
+                    return birthdate
+                except ValueError:
+                    print("Invalid date. Please enter a valid date in the format DD-MM-YYYY.")
+            else:
+                print("Invalid format. Please enter the birthdate in the format DD-MM-YYYY.")
