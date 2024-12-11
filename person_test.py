@@ -49,6 +49,22 @@ def test_add_relation():
     assert (amy.relation_dict["father"] == [cooper])
 
 
+def test_remove_relation():
+    amy = Person("Amy", "02-03-1997", "F")
+    jack = Person("Jack", "02-03-1999", "M")
+    mike = Person("Mike", "02-03-1995", "M")
+    amy.add_relation("sibling", jack)
+    assert (amy.relation_dict["sibling"] == [jack])
+    assert (amy.remove_relation("mother", jack) == -1 and
+            len(amy.relation_dict) == 1)
+    amy.add_relation("sibling", mike)
+    amy.remove_relation("sibling", jack)
+    assert (amy.relation_dict["sibling"] == [mike])
+    assert (amy.remove_relation("sibling", jack) == -1)
+    amy.remove_relation("sibling", mike)
+    assert (len(amy.relation_dict) == 0)
+
+
 def test_str():
     amy = Person("Amy", "02-03-1997", "F")
     jack = Person("Jack", "02-03-1999", "M")
@@ -57,8 +73,8 @@ def test_str():
     amy.add_relation("father", cooper)
     assert (str(amy) == "Name: Amy, Gender: F, Birthday: " +
                         "Mar 02, Age: 27, Occupation: Unknown, " +
-                        "Immediate Family Relations: sibling: Jack; " +
-                        "father: Cooper;")
+                        "Immediate Family Relations: Sibling: Jack; " +
+                        "Father: Cooper;")
     amy = Person("Amy", "02-03-1997", "F", "doctor", False)
     assert (str(amy) == "Name: Amy (Deceased), Gender: F, Birthday: " +
                         "Mar 02, Age: 27, Occupation: doctor, " +

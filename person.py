@@ -52,6 +52,22 @@ class Person:
         else:
             self.relation_dict[relation].append(new_person)
 
+    def remove_relation(self, relation, new_person):
+        """remove a relation of a family member using person object"""
+        if relation not in self.relation_dict:
+            print(f"{self.name} has no {relation}. Please try again.")
+            return -1
+        else:
+            if new_person not in self.relation_dict[relation]:
+                print(f"{new_person.name} is NOT {relation} of {self.name}." +
+                      "Please try again.")
+                return -1
+            self.relation_dict[relation].remove(new_person)
+
+            # if there is nobody else under this relation
+            if not self.relation_dict[relation]:
+                del self.relation_dict[relation]
+
     def __str__(self):
         """Store the person object's information in string for printing"""
         string = ""

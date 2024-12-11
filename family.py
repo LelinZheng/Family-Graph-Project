@@ -76,23 +76,82 @@ class Family:
 
         # Adding opposite relationship to the second person
         if relationship == "sibling" or relationship == "partner":
-            first_person.add_relation(relationship, second_person)
-            second_person.add_relation(relationship, first_person)
-            print(f"Added relationship: {second_person.name} is" +
-                  f" {relationship} of {first_person.name}.")
+            if first_person.add_relation(relationship, second_person) != -1\
+               and\
+               second_person.add_relation(relationship, first_person) != -1:
+                print(f"Added relationship: {second_person.name} is" +
+                      f" {relationship} of {first_person.name}.")
+            else:
+                return -1
         elif relationship == "mother" or relationship == "father":
-            first_person.add_relation(relationship, second_person)
-            second_person.add_relation("children", first_person)
-            print(f"Added relationship: {second_person.name} is" +
-                  f" {relationship} of {first_person.name}.")
+            if first_person.add_relation(relationship, second_person) != -1\
+               and\
+               second_person.add_relation("children", first_person) != -1:
+                print(f"Added relationship: {second_person.name} is" +
+                      f" {relationship} of {first_person.name}.")
+            else:
+                return -1
         elif relationship == "children":
-            first_person.add_relation(relationship, second_person)
+            res1 = first_person.add_relation(relationship, second_person)
             if first_person.gender == "M":
-                second_person.add_relation("father", first_person)
+                res2 = second_person.add_relation("father", first_person)
             elif first_person.gender == "F":
-                second_person.add_relation("mother", first_person)
-            print(f"Added relationship: {second_person.name} is" +
-                  f" {relationship} of {first_person.name}.")
+                res2 = second_person.add_relation("mother", first_person)
+            if res1 != -1 and res2 != -1:
+                print(f"Added relationship: {second_person.name} is" +
+                      f" {relationship} of {first_person.name}.")
+            else:
+                return -1
+        else:
+            print(f"{relationship} does not exists as an immediate family" +
+                  " relationship. Please try again.")
+
+    def remove_relation(self, first_person_name, relationship,
+                        second_person_name):
+        """
+        Remove relation between two people in the family.
+        Both people's relation_dict will be updated.
+        """
+        first_person = self._convert_name_to_person(first_person_name)
+        second_person = self._convert_name_to_person(second_person_name)
+
+        if first_person not in self.family_dict.values():
+            print(f"{first_person_name} does not exist in the family." +
+                  f"Please add them to the {self.family_name} family first.")
+            return -1
+        if second_person not in self.family_dict.values():
+            print(f"{second_person_name} does not exist in the family." +
+                  f" Please add them to the {self.family_name} family first.")
+            return -1
+
+        # Removing opposite relationship to the second person
+        if relationship == "sibling" or relationship == "partner":
+            if first_person.remove_relation(relationship, second_person) != -1\
+               and\
+               second_person.remove_relation(relationship, first_person) != -1:
+                print(f"Removed relationship: {second_person.name} is" +
+                      f" NO longer {relationship} of {first_person.name}.")
+            else:
+                return -1
+        elif relationship == "mother" or relationship == "father":
+            if first_person.remove_relation(relationship, second_person) != -1\
+               and\
+               second_person.remove_relation("children", first_person) != -1:
+                print(f"Removed relationship: {second_person.name} is" +
+                      f" NO longer {relationship} of {first_person.name}.")
+            else:
+                return -1
+        elif relationship == "children":
+            res1 = first_person.remove_relation(relationship, second_person)
+            if first_person.gender == "M":
+                res2 = second_person.remove_relation("father", first_person)
+            elif first_person.gender == "F":
+                res2 = second_person.remove_relation("mother", first_person)
+            if res1 != -1 and res2 != -1:
+                print(f"Removed relationship: {second_person.name} is" +
+                      f" NO longer {relationship} of {first_person.name}.")
+            else:
+                return -1
         else:
             print(f"{relationship} does not exists as an immediate family" +
                   " relationship. Please try again.")

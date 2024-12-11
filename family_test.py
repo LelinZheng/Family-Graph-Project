@@ -92,6 +92,32 @@ def test_add_relation():
     assert (len(family.family_dict["Prince William"].relation_dict) == 3)
 
 
+def test_remove_relation():
+    family = Family("British Royal")
+    family.create_person_in_fam("Queen Elizabeth II",
+                                "21-04-1926", "F", "Queen", False)
+    family.create_person_in_fam("King Charles III",
+                                "14-11-1948", "M", "King", True)
+    assert (family.remove_relation("Prince Edward", "mother",
+            "Queen Elizabeth II") == -1)
+    assert (family.remove_relation("King Charles III", "children",
+            "Prince William") == -1)
+
+    family.add_relation("King Charles III", "mother", "Queen Elizabeth II")
+    assert (len(family.family_dict["King Charles III"
+                                   ].relation_dict["mother"]) == 1)
+    assert (len(family.family_dict["Queen Elizabeth II"
+                                   ].relation_dict["children"]) == 1)
+    assert (family.remove_relation("King Charles III", "children",
+            "Queen Elizabeth II") == -1)
+    assert (family.remove_relation("King Charles III", "mother",
+            "Prince William") == -1)
+    family.remove_relation("King Charles III", "mother",
+            "Queen Elizabeth II")
+    assert (len(family.family_dict["King Charles III"
+                                   ].relation_dict) == 0)
+
+
 def test_update_person_info():
     family = Family("British Royal")
     assert (family.update_person_info("Queen Elizabeth II",

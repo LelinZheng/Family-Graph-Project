@@ -33,8 +33,10 @@ class Menu:
         menu_display = """
         Please choose one of the following options:
 
-        3. Add a new person to your family tree
-        4. Remove a person from your family tree
+        1. Add a new person to your family tree
+        2. Remove a person from your family tree
+        3. Add immediate relationship for a person
+        4. Remove immediate relationship for a person
         5. Update a person's information
         6. Find the relationship (path) between two people
         7. Look up a person's information
@@ -46,8 +48,8 @@ class Menu:
         """
         print(menu_display)
         user_input = input("Your choice: ")
-        while user_input not in {"3", "4", "5", "6", "7", "8", "9", "10"}:
-            print("Invalid choice. Please enter a number between 3 and 10.")
+        while user_input not in {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}:
+            print("Invalid choice. Please enter a number between 1 and 10.")
             user_input = input("Your choice: ").strip()
         return user_input
 
@@ -86,11 +88,15 @@ class Menu:
         """
         Execute a specific action based on the user's input
         """
-        if action == "3":  # Add a new person to your family tree
+        if action == "1":  # Add a new person to your family tree
             self.family.create_person_in_fam(*args)
             self.add_relationships_for_person(args[0])
-        elif action == "4":  # Remove a person from your family tree
+        elif action == "2":  # Remove a person from your family tree
             self.family.delete_person(*args)
+        elif action == "3":  # Add a relationship for a person
+            self.add_relationships_for_person(*args)
+        elif action == "4":  # Remove a relationship for a person
+            self.remove_relationships_for_person(*args)
         elif action == "5":  # Update a person's information
             self.family.update_person_info(*args)
         elif action == "6":  # Find the relationship (path) between two people
@@ -142,7 +148,7 @@ class Menu:
 
             while True:
                 option = self.show_option_menu()
-                if option == "3":
+                if option == "1":
                     name = input("Enter the name of the new person: ")
                     birthdate = input("Enter the birthdate(DD-MM-YYYY): ")
                     gender = input("Enter the gender (M/F): ")
@@ -154,8 +160,14 @@ class Menu:
                         is_alive_input = input("Is this person alive? (Y/N): ").strip().upper()
                     is_alive = True if is_alive_input.upper() == "Y" else False
                     self.execute_action(option, name, birthdate, gender, occupation, is_alive)
-                elif option == "4":
+                elif option == "2":
                     name = input("Enter the name of the person to remove: ")
+                    self.execute_action(option, name)
+                elif option == "3":
+                    name = input("Enter the name of the person to add immediate relationship to: ")
+                    self.execute_action(option, name)
+                elif option == "4":
+                    name = input("Enter the name of the person to remove immediate relationship to: ")
                     self.execute_action(option, name)
                 elif option == "5":
                     name = input("Enter the name of the person to update: ")
@@ -192,7 +204,7 @@ class Menu:
 
     def add_relationships_for_person(self, person_name):
         """
-        Add relationships for a newly added person to the family.
+        Add immediate relationships for a person in the family.
         """
         if len(self.family.family_dict) == 1:
             print(f"\nThis is the current family: ")
@@ -206,7 +218,9 @@ class Menu:
             print(f"\nThis is the current family: ")
             self.family.print_family_dict()
             print()
-            second_person_name = input("Enter the name of another person in the family to define a relationship: ").strip()
+            second_person_name = input("Enter the name of another person in the family to define a relationship or pressed 'N' to quit: ").strip()
+            if second_person_name.upper() == 'N':
+                break
             if second_person_name == person_name:
                 print("You cannot define a relationship with the same person. Please try again.")
                 continue
@@ -215,9 +229,7 @@ class Menu:
                                   "(Choose [RELATIONSHIP] from mother, father, sibling, children, partner): ").strip()
 
             # Call the add_relation method to build the relation_dict
-            result = self.family.add_relation(person_name, relationship, second_person_name)
-            if result == -1:
-                print("Relationship could not be added. Please check the names and try again.")
+            self.family.add_relation(person_name, relationship, second_person_name)
 
             add_more = input("Do you want to add another relationship? (Y/N): ").strip().upper()
             while add_more not in {"Y", "N"}:
@@ -227,11 +239,41 @@ class Menu:
                 break
 
         # Confirm all relationships are added
-        confirm = input(f"Are all immediate relationships for {person_name} added? (Y/N): ").strip().upper()
+        confirm = input(f"Are all immediate relationships for {person_name} added? (Y/N) ").strip().upper()
         while confirm not in {"Y", "N"}:
             confirm = input("Invalid input. Are all relationships for this person added? (Y/N): ").strip().upper()
 
         if confirm == "Y":
             print(f"All relationships for {person_name} have been added.")
         else:
-            print(f"Relationships for {person_name} are incomplete. You can update them later from the menu.")
+            input("Press Enter to continue...")
+            self.add_relationships_for_person(person_name)
+    
+    def remove_relationships_for_person(self, person_name):
+        """
+        Remove relationships for a person in the family.
+        """
+
+        print("Immediate family relationships includes: mother, father, sibling, children, partner.")
+        while True:
+            print(f"\nThis is the current family: ")
+            self.family.print_family_dict()
+            print()
+            second_person_name = input("Enter the name of another person in the family to remove a relationship or pressed 'N' to quit: ").strip()
+            if second_person_name.upper() == 'N':
+                break
+            if second_person_name == person_name:
+                print("You cannot remove a relationship with the same person. Please try again.")
+                continue
+
+            relationship = input(f"Fill in the [ ]: {person_name}'s [RELATIONSHIP] was {second_person_name}" +
+                                  "(Choose [RELATIONSHIP] from mother, father, sibling, children, partner): ").strip()
+
+            self.family.remove_relation(person_name, relationship, second_person_name)
+
+            remove_more = input("Do you want to remove another relationship? (Y/N): ").strip().upper()
+            while remove_more not in {"Y", "N"}:
+                remove_more = input("Invalid input. Do you want to remove another immediate relationship? (Y/N): ").strip().upper()
+
+            if remove_more == "N":
+                break
