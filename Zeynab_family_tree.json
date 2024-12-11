@@ -15,7 +15,7 @@
         "name": "Alice",
         "birthdate": "12-12-1950",
         "gender": "F",
-        "occupation": "Unknown",
+        "occupation": "doctor",
         "is_alive": true,
         "relation_dict": {
             "children": [

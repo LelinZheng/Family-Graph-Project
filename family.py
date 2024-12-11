@@ -30,6 +30,7 @@ class Family:
         """Add a person object to the family"""
         if person.name not in self.family_dict:
             self.family_dict[person.name] = person
+            print(f"{person.name} is added to the {self.family_name} family.")
         else:
             print(f"{person.name} already exists in the {self.family_name}" +
                   "family. Please try again.")
@@ -42,6 +43,7 @@ class Family:
             return -1
 
         del self.family_dict[person.name]
+        print(f"{person.name} is removed from the {self.family_name} family.")
         # remove this person from everybody else' relation_dict
         for member in self.family_dict.values():
             for relation, relatives in list(member.relation_dict.items()):
@@ -69,22 +71,28 @@ class Family:
             return -1
         if second_person not in self.family_dict.values():
             print(f"{second_person_name} does not exist in the family." +
-                  f"Please add them to the {self.family_name} family first.")
+                  f" Please add them to the {self.family_name} family first.")
             return -1
 
         # Adding opposite relationship to the second person
         if relationship == "sibling" or relationship == "partner":
             first_person.add_relation(relationship, second_person)
             second_person.add_relation(relationship, first_person)
+            print(f"Added relationship: {second_person.name} is" +
+                  f" {relationship} of {first_person.name}.")
         elif relationship == "mother" or relationship == "father":
             first_person.add_relation(relationship, second_person)
             second_person.add_relation("children", first_person)
+            print(f"Added relationship: {second_person.name} is" +
+                  f" {relationship} of {first_person.name}.")
         elif relationship == "children":
             first_person.add_relation(relationship, second_person)
             if first_person.gender == "M":
                 second_person.add_relation("father", first_person)
             elif first_person.gender == "F":
                 second_person.add_relation("mother", first_person)
+            print(f"Added relationship: {second_person.name} is" +
+                  f" {relationship} of {first_person.name}.")
         else:
             print(f"{relationship} does not exists as an immediate family" +
                   " relationship. Please try again.")
@@ -96,10 +104,17 @@ class Family:
             return -1
         if attribute == "gender":
             person.update_gender(new_attr)
+            print(f"{person.name}'s gender is updated to {new_attr}.")
         elif attribute == "occupation":
             person.update_occupation(new_attr)
+            print(f"{person.name}'s occupation is updated to {new_attr}.")
         elif attribute == "is_alive":
-            person.update_is_alive(new_attr)
+            if new_attr == "Y":
+                person.update_is_alive(True)
+                print(f"{person.name}'s status is updated to alive.")
+            else:
+                person.update_is_alive(False)
+                print(f"{person.name}'s status is updated to deceased.")
         else:
             print(f"{attribute} of {person_name} does not exists." +
                   "Please try again.")
@@ -107,7 +122,7 @@ class Family:
 
     def print_family_dict(self):
         """Print the family dict in a string format"""
-        print(f"The {self.family_name} Family:\n")
+        print(f"The {self.family_name} Family:")
         string = ""
         for person_name in self.family_dict:
             string += person_name + ", "
@@ -147,11 +162,11 @@ class Family:
         first_person = self._convert_name_to_person(first_person_name)
         if first_person not in self.family_dict.values():
             print(f"{first_person_name} does not exist in the" +
-                  f"{self.family_name} family. Please try again.")
+                  f" {self.family_name} family. Please try again.")
             return -1
         if second_person_name not in self.family_dict:
             print(f"{second_person_name} does not exist in the" +
-                  f"{self.family_name} family. Please try again.")
+                  f" {self.family_name} family. Please try again.")
             return -1
 
         relationship_stack = deque()
@@ -174,7 +189,7 @@ class Family:
                         relationship_stack.append(new_path)
 
         print(f"{second_person_name} cannot be founded to connect to " +
-              f"{first_person.name}")
+              f" {first_person.name}")
         return -1
 
     def _find_immediate_relation(self, first_person, second_person):
@@ -198,7 +213,7 @@ class Family:
         out_put += people_list[-1].name
         print(out_put)
         print(f"The relationship distance from {people_list[0].name} to" +
-              f"{people_list[-1].name} is {len(people_list)-1} step(s).")
+              f" {people_list[-1].name} is {len(people_list)-1} step(s).")
 
     def save_family_to_json(self, filename):
         """
@@ -222,7 +237,7 @@ class Family:
 
         # Check if the file already exists
         if os.path.exists(filename):
-            print(f"Error: File '{filename}' already exists." +
+            print(f"File '{filename}' already exists." +
                   " Are you sure to overwrite it? (Y/N)")
             ans = input().strip().upper()
             while ans not in {"Y", "N"}:
@@ -253,5 +268,5 @@ class Family:
             if individual_name == name:
                 return self.family_dict[individual_name]
         print(f"{name} does not exist in the {self.family_name}" +
-              "family. Please try again.")
+              " family. Please try again.")
         return

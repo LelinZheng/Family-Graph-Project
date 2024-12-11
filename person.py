@@ -56,7 +56,7 @@ class Person:
         """Store the person object's information in string for printing"""
         string = ""
         for (relation, people) in self.relation_dict.items():
-            string += " " + relation + ":"
+            string += " " + relation.capitalize() + ":"
             for person in people:
                 string += " " + person.name
             string += ";"

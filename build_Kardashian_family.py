@@ -2,6 +2,10 @@ from family import Family
 
 
 def main():
+    """
+    This is a program to initialize a demo file of Kardashian family
+    and make a json file
+    """
 
     family = Family("Kardashian")
     family.create_person_in_fam("Kim Kardashian", "21-10-1980", "F", "model")

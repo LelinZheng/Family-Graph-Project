@@ -14,39 +14,12 @@ after the user provides a family tree
 after the user is done with all the functions
 save the data into a new json file or the old json file
 """
-from family import Family
+from menu import Menu
 
 
 def main():
-    pass
-
-
-def load_family_from_json(filename="Zeynab_family_tree.json"):
-    """Load the family tree data from a JSON file and reconstruct the family graph."""
-    with open(filename, "r") as file:
-        json_data = json.load(file)
-    
-    # Step 1: Create Person objects without relations
-    family_dict = {
-        name: Person(
-            name=data["name"],
-            birthdate=data["birthdate"],
-            gender=data["gender"],
-            occupation=data["occupation"],
-            is_alive=data["is_alive"]
-        )
-        for name, data in json_data.items()
-    }
-
-    # Step 2: Re-establish relationships using `relation_dict`
-    for name, data in json_data.items():
-        person = family_dict[name]
-        for relation, relatives in data["relation_dict"].items():
-            for relative_name in relatives:
-                person.add_relation(relation, family_dict[relative_name])
-
-    print(f"Family tree loaded from {filename}")
-    return family_dict
+    menu = Menu()
+    menu.run()
 
 
 main()
