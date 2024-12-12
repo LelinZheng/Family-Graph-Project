@@ -189,12 +189,14 @@ def menu_get_person_info(user_family):
         try:
             person_name = input("Enter the name of the person to look up: ")
             user_family.get_person_info(person_name)
+            return
         except Exception as err:
             print(f"An error occurred: {err}. Please try again.")
 
 def menu_draw_family_graph(user_family):
     try:
         graph.create_graph(user_family)
+        return
     except Exception as err:
         print(f"An error occurred: {err}. Please try again.")
 
@@ -202,6 +204,7 @@ def menu_save_family_to_json(user_family):
     try:
         filename = input("Enter the filename to save (e.g., Zeynab_family_tree.json): ")
         user_family.save_family_to_json(filename)
+        return
     except Exception as err:
         print(f"An error occurred: {err}. Please try again.")
 
