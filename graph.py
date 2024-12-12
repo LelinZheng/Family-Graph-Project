@@ -1,3 +1,5 @@
+from cProfile import label
+
 import networkx as nx
 import matplotlib.pyplot as plt
 
@@ -21,8 +23,16 @@ def create_graph(family):
     plt.figure(figsize=(10,10))
     nx.draw(family_graph, pos, with_labels=True, labels = labels, node_size = 2000,
             node_color = "skyblue", font_size = 8, arrows= True)
-    relationship_labels = nx.get_edge_attributes(family_graph, "relation")
-    nx.draw_networkx_edge_labels(family_graph,pos, edge_labels = relationship_labels,
+
+    relation_labels = {}
+    for u,v,key,data in family_graph.edges(data=True, keys= True):
+        new_label = data.get('relation','')
+        if (u,v) in relation_labels:
+            relation_labels[(u,v)] += f"| {new_label}"
+        else:
+            relation_labels[(u,v)] = new_label
+
+    nx.draw_networkx_edge_labels(family_graph,pos, edge_labels = relation_labels,
                                  font_color="black", font_size=5, label_pos= 0.7)
     plt.title("Family Tree")
     plt.show()
