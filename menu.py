@@ -110,7 +110,9 @@ def execute_action(action, user_family):
     return user_family
 
 def menu_create_person(user_family):
-    name = input("Enter the name of the new person: ")
+    print(f"\nBelow is the current family dictionary for your information: ")
+    user_family.print_family_dict()
+    name = input("\nEnter the name of the new person: ")
     birthdate = get_valid_birthdate()
     gender = input("Enter the gender (M/F): ").strip().upper()
     while gender not in {"F", "M"}:
@@ -122,9 +124,18 @@ def menu_create_person(user_family):
         is_alive_input = input("Is this person alive? (Y/N): ").strip().upper()
     is_alive = True if is_alive_input.upper() == "Y" else False
     user_family.create_person_in_fam(name, birthdate, gender, occupation, is_alive)
+
+    add_relation_option = input("Do you want to add relations for the person? Enter 'Yes' or 'No'： ").strip().lower()
+    while add_relation_option not in "yes" or "no":
+        print("Invalid input. Please enter 'Yes' or 'No'.")
+        add_relation_option = input("Do you want to add relations for the person? Enter 'Yes' or 'No'： ")
+    if add_relation_option == "yes":
+        user_family = menu_add_relationships_for_person(user_family)
     return user_family
 
 def menu_delete_person(user_family):
+    print(f"\nBelow is the current family dictionary for your information: ")
+    user_family.print_family_dict()
     person_name = input("Enter the name of the person to remove: ")
     user_family.delete_person(person_name)
     return user_family
@@ -132,7 +143,7 @@ def menu_delete_person(user_family):
 def menu_add_relationships_for_person(user_family):
     while True:
         try:
-            print("Immediate family relationships includes: mother, father, sibling, children, partner.")
+            print("\nImmediate family relationships includes: mother, father, sibling, children, partner.")
             first_person_name = input("Enter the name of the first person ").strip()
             second_person_name = input("Enter the name of the second person ").strip()
             relation = input("Enter their relation: ")
@@ -156,7 +167,9 @@ def menu_remove_relationships_for_person(user_family):
 def menu_update_person_info(user_family):
     while True:
         try:
-            person_name = input("Enter the name of the person to update: ")
+            print(f"\nBelow is the current family dictionary for your information: ")
+            user_family.print_family_dict()
+            person_name = input("\nEnter the name of the person to update: ")
             attribute = input('Enter the attribute to update (please enter "gender", "occupation", "is_alive"): ')
             while attribute not in ["gender", "occupation", "is_alive"]:
                 print("Invalid input.")
