@@ -83,6 +83,7 @@ def loop_main_menu(user_family):
     user_action = show_option_menu()
     while user_action != "10":
         user_family = execute_action(user_action,user_family)
+        input("Press Enter to continue")
         user_action = show_option_menu()
     print("You have exited the program.")
 
