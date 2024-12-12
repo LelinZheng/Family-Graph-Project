@@ -32,10 +32,10 @@ def get_user_family():
         print(f"New family '{family_name}' created.")
 
     elif choice == "2":
-        family_name = input("Enter the family name: ").strip()
         filename = input("Enter a JSON filename to load the family tree or "
                          "'DEMO1' to load Zeynab's family tree for demonstration "
                          "or 'DEMO2' to load Kardashian's family tree for demonstration: ").strip()
+        family_name = input("Enter a name for the family or the demonstration family: ").strip()
 
         if filename.strip() == "DEMO1":
             filename = "Zeynab_family_tree.json"

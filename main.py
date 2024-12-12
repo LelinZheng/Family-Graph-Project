@@ -18,6 +18,7 @@ import menu
 import demo_kardashian_family
 import demo_zeynab_family
 
+
 def main():
     try:
         # demo_kardashian_family.build_kardashian_family()
@@ -27,6 +28,7 @@ def main():
 
     except Exception as err:
         print(f"An error occurred: {err}. Please restart the program and try again.")
+
 
 if __name__ == "__main__":
     main()
