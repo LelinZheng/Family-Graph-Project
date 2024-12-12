@@ -12,19 +12,32 @@ def create_graph(family):
     for person in family.family_dict.values():
         # Add everyone in the family dict as a node
         family_graph.add_node(person.name)
+
+    omit_siblings = len(family_graph.nodes) >10
+
+    for person in family.family_dict.values():
         for relation, relatives in person.relation_dict.items():
             for relative in relatives:
-                # Add every relationship of the person as an edge
-                if relation != "sibling":
-                    family_graph.add_edge(person.name, relative.name, relation=f"{relation}")
+                # If the family tree is large, we omit the sibling connections to make the graph clearer
+                if omit_siblings and relation == "sibling":
+                    continue
+                # Add relationships as edges
+                family_graph.add_edge(person.name, relative.name, relation=f"{relation}")
 
     pos = nx.kamada_kawai_layout(family_graph)
     labels= {node: node for node in family_graph.nodes()}
-    plt.figure(figsize=(10,10))
-    nx.draw(family_graph, pos, with_labels=True, labels = labels, node_size = 2000,
-            node_color = "skyblue", font_size = 8, arrows= True)
+
+    if len(family_graph.nodes) <= 10:
+        plt.figure(figsize=(5, 5))
+        nx.draw(family_graph, pos, with_labels=True, labels=labels, node_size=1000,
+                node_color="skyblue", font_size=8, arrows=True)
+    else:
+        plt.figure(figsize=(10,10))
+        nx.draw(family_graph, pos, with_labels=True, labels = labels, node_size = 1500,
+                node_color = "skyblue", font_size = 8, arrows= True)
 
     relation_labels = {}
+    # Handle edge labels in multi-directed graph
     for u,v,key,data in family_graph.edges(data=True, keys= True):
         new_label = data.get('relation','')
         if (u,v) in relation_labels:
