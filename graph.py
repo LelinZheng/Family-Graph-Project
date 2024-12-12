@@ -24,7 +24,7 @@ def create_graph(family):
                 # Add relationships as edges
                 family_graph.add_edge(person.name, relative.name, relation=f"{relation}")
 
-    pos = nx.kamada_kawai_layout(family_graph)
+    pos = nx.spring_layout(family_graph, seed = 50)
     labels= {node: node for node in family_graph.nodes()}
 
     if len(family_graph.nodes) <= 10:
