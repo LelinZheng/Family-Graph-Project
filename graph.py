@@ -1,8 +1,10 @@
-from cProfile import label
+
 
 import networkx as nx
 import matplotlib.pyplot as plt
 
+# The graph may turn out differently (mess up with the relation labels) for different computer settings
+# so please see our graphs in the final report for reference
 def create_graph(family):
     """
     param: a family object
@@ -49,6 +51,4 @@ def create_graph(family):
                                  font_color="black", font_size=5, label_pos= 0.7)
     plt.title("Family Tree")
     plt.show()
-
-
 

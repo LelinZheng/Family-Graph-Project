@@ -13,7 +13,7 @@ def show_initial_menu():
     menu_display = """To get started, please choose one of the following options:
 
         1. Create a new family
-        2. Continue with existing family data
+        2. Continue with existing family data (demonstration family trees provided here)
 
         """
     print(menu_display)
