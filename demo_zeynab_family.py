@@ -4,7 +4,7 @@ import json
 
 # This demo file is linked to the Zeynab_family_tree.json file
 
-def main():
+def build_zeynab_family():
     family_dict = {}
 
     # Zeynab could change the people in the demo family, starting from this line
@@ -187,4 +187,3 @@ def load_family_from_json(filename="Zeynab_family_tree.json"):
     print(f"Family tree loaded from {filename}")
     return family_dict
 
-main()

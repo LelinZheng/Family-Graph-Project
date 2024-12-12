@@ -1,7 +1,7 @@
 from family import Family
 import graph
 
-def main():
+def build_kardashian_family():
     """
     This is a program to initialize a demo file of Kardashian family
     and make a json file
@@ -142,5 +142,3 @@ def main():
     family.get_person_info("North West")
     family.show_immediate_family("North West")
 
-if __name__ == '__main__':
-    main()

@@ -1,8 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 
-from graph_helpers import edge_labels
-
 
 def create_graph(family):
     """

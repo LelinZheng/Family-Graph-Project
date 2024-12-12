@@ -15,12 +15,15 @@ after the user is done with all the functions
 save the data into a new json file or the old json file
 """
 import menu
-from menu import loop_main_menu
+import demo_kardashian_family
+import demo_zeynab_family
 
 def main():
     try:
+        # demo_kardashian_family.build_kardashian_family()
+        # demo_zeynab_family.build_zeynab_family()
         user_family = menu.get_user_family()
-        loop_main_menu(user_family)
+        menu.loop_main_menu(user_family)
 
     except Exception as err:
         print(f"An error occurred: {err}. Please restart the program and try again.")

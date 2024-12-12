@@ -33,9 +33,13 @@ def get_user_family():
 
     elif choice == "2":
         family_name = input("Enter the family name: ").strip()
-        filename = input('Enter the JSON filename or "DEMO" to load: ').strip()
+        filename = input("Enter a JSON filename to load the family tree or "
+                         "'DEMO1' to load Zeynab's family tree for demonstration "
+                         "or 'DEMO2' to load Kardashian's family tree for demonstration: ").strip()
 
-        if filename.rstrip() == "DEMO":
+        if filename.strip() == "DEMO1":
+            filename = "Zeynab_family_tree.json"
+        elif filename.rstrip() == "DEMO2":
             filename = "Kardashian_family_tree.json"
 
         family_tree = load_family_from_json(filename)
