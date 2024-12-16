@@ -4,6 +4,7 @@ import json
 
 # This demo file is linked to the Zeynab_family_tree.json file
 
+
 def main():
     family_dict = {}
 
@@ -49,7 +50,6 @@ def main():
     add_person(aunt, family_dict)
     add_person(cousin, family_dict)
     add_person(grandpa, family_dict)
-
 
     # Save to JSON
     save_family_to_json(family_dict)

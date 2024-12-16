@@ -39,7 +39,7 @@
         "relation_dict": {
             "partner": [
                 "Robert Kardashian",
-                "Caitlyn (Bruce) Jenner"
+                "Caitlyn(Bruce) Jenner"
             ],
             "children": [
                 "Kim Kardashian",
@@ -175,7 +175,7 @@
                 "Kris Jenner"
             ],
             "father": [
-                "Caitlyn (Bruce) Jenner"
+                "Caitlyn(Bruce) Jenner"
             ]
         }
     },
@@ -204,12 +204,12 @@
                 "Kris Jenner"
             ],
             "father": [
-                "Caitlyn (Bruce) Jenner"
+                "Caitlyn(Bruce) Jenner"
             ]
         }
     },
-    "Caitlyn (Bruce) Jenner": {
-        "name": "Caitlyn (Bruce) Jenner",
+    "Caitlyn(Bruce) Jenner": {
+        "name": "Caitlyn(Bruce) Jenner",
         "birthdate": "28-10-1949",
         "gender": "M->F",
         "occupation": " athlete",

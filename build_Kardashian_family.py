@@ -16,7 +16,7 @@ def main():
     family.create_person_in_fam("Rob Kardashian", "17-03-1987", "M", "businessman")
     family.create_person_in_fam("Kendall Jenner", "03-11-1995", "F", "model")
     family.create_person_in_fam("Kylie Jenner", "10-08-1997", "F", "businesswoman")
-    family.create_person_in_fam("Caitlyn (Bruce) Jenner", "28-10-1949", "M->F", " athlete")
+    family.create_person_in_fam("Caitlyn(Bruce) Jenner", "28-10-1949", "M->F", " athlete")
 
     family.create_person_in_fam("North West", "15-06-2013", "F")
     family.create_person_in_fam("Saint West", "05-12-2015", "M")
@@ -83,7 +83,7 @@ def main():
 
     # Partner relationships
     family.add_relation("Kris Jenner", "partner", "Robert Kardashian")
-    family.add_relation("Kris Jenner", "partner", "Caitlyn (Bruce) Jenner")
+    family.add_relation("Kris Jenner", "partner", "Caitlyn(Bruce) Jenner")
     family.add_relation("Kim Kardashian", "partner", "Kanye West")
     family.add_relation("Kourtney Kardashian", "partner", "Scott Disick")
     family.add_relation("Kourtney Kardashian", "partner", "Travis Barker ")
@@ -126,8 +126,8 @@ def main():
     family.add_relation("Khloe Kardashian", "father", "Robert Kardashian")
     family.add_relation("Rob Kardashian", "father", "Robert Kardashian")
 
-    family.add_relation("Kendall Jenner", "father", "Caitlyn (Bruce) Jenner")
-    family.add_relation("Kylie Jenner", "father", "Caitlyn (Bruce) Jenner")
+    family.add_relation("Kendall Jenner", "father", "Caitlyn(Bruce) Jenner")
+    family.add_relation("Kylie Jenner", "father", "Caitlyn(Bruce) Jenner")
 
     family.save_family_to_json("Kardashian_family_tree.json")
 

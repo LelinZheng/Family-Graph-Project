@@ -11,6 +11,22 @@ def test_constructor():
             person.is_alive is True)
 
 
+def test_first_name():
+    person = Person("Amy", "02-03-1997", "M", "accountant")
+    assert person.first_name == "Amy"
+
+    person_with_full_name = Person("John Martin Luke", "02-03-1997", "M")
+    assert person_with_full_name.first_name == "John"
+
+
+def test_last_name():
+    person = Person("Luke", "02-03-1997", "M", "accountant")
+    assert person.last_name == ""
+
+    person_with_middle_name = Person("John Martin Luke", "02-03-1997", "M")
+    assert person_with_middle_name.last_name == "M.Luke"
+
+
 def test_age():
     person = Person("Amy", "02-03-1997", "M", "accountant")
     assert (person.age == 27)

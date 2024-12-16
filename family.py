@@ -267,8 +267,7 @@ class Family:
         out_put = ""
         for i in range(len(people_list)-1):
             out_put += people_list[i].name +\
-                       f"('s {self._find_immediate_relation(
-                        people_list[i], people_list[i+1])})" + " -> "
+                       f"('s {self._find_immediate_relation(people_list[i], people_list[i+1])})" + " -> "
         out_put += people_list[-1].name
         print(out_put)
         print(f"The relationship distance from {people_list[0].name} to" +
@@ -329,3 +328,5 @@ class Family:
         print(f"{name} does not exist in the {self.family_name}" +
               " family. Please try again.")
         return
+    
+    

@@ -1,6 +1,7 @@
 from family import Family
 from person import Person
 from datetime import datetime
+from graph import create_graph
 import os
 import json
 import re
@@ -110,15 +111,15 @@ class Menu:
         elif action == "9":  # Save the data into a new or existing JSON file
             self.family.save_family_to_json(*args)
         elif action == "10":  # Exit the program with confirmation
-            confirm_exit = input("Are you sure you want to exit? (Y/N): ").strip().upper()
-            while confirm_exit not in {"Y", "N"}:
-                confirm_exit = input("Invalid choice. Are you sure you want to exit? (Y/N): ").strip().upper()
-            if confirm_exit == "Y":
-                print("Exiting the Family Tree Management System. Goodbye!")
-                exit()  # Exit the program
-            else:
-                print("Exit cancelled. Returning to the menu.")
-                return -1
+            # confirm_exit = input("Are you sure you want to exit? (Y/N): ").strip().upper()
+            # while confirm_exit not in {"Y", "N"}:
+            #     confirm_exit = input("Invalid choice. Are you sure you want to exit? (Y/N): ").strip().upper()
+            # if confirm_exit == "Y":
+            #     print("Exiting the Family Tree Management System. Goodbye!")
+            exit()  # Exit the program
+            # else:
+            #     print("Exit cancelled. Returning to the menu.")
+            #     return -1
         else:
             print("Invalid action.")
 
@@ -136,13 +137,13 @@ class Menu:
                 print(f"New family '{family_name}' created.")
                 input("Press Enter to continue...")
             elif choice == "2":
-                family_name = input("Enter the family name: ").strip()
                 filename = input('Enter the JSON filename or "DEMO" to load: ').strip()
-                
+
                 if filename.rstrip() == "DEMO":
                     filename = "Kardashian_family_tree.json"
-                
+
                 family_tree = self.load_family_from_json(filename)
+                family_name = input("Enter the family name: ").strip()
                 self.family = Family(family_name, family_tree)
                 if not family_tree:
                     print(f"New family '{family_name}' created.")
@@ -197,9 +198,9 @@ class Menu:
                     name = input("Enter the name of the person to look up: ")
                     self.execute_action(option, name)
                 elif option == "8":
-                    self.execute_action(option)
+                    create_graph(self.family)
                 elif option == "9":
-                    filename = input("Enter the filename to save (e.g., Zeynab_family_tree.json): ")
+                    filename = input("Enter the filename to save (e.g., Kardashian_family_tree.json): ")
                     self.execute_action(option, filename)
                 elif option == "10":
                     if self.execute_action(option) == -1:

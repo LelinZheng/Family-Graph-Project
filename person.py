@@ -30,6 +30,29 @@ class Person:
         age = current_year - birthyear
         return age
 
+    @property
+    def first_name(self):
+        """
+        Function to return person's first name
+        """
+        if ' ' in self.name:
+            return self.name.split(' ')[0]
+        return self.name  # If no space, it is the first name only
+
+    @property
+    def last_name(self):
+        """
+        Function to return person's last name with initial middle name
+        """
+        if ' ' in self.name:
+            parts = self.name.split(' ')
+            if len(parts) > 2:
+                # If there's more than two parts
+                # the last one in the middle is treated as middle name
+                return f"{parts[1][0]}.{parts[2]}"
+            return parts[1]  # Single middle name
+        return ""  # If no last name is entered
+
     def update_gender(self, new_gender):
         self.gender = new_gender
 
