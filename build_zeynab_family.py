@@ -150,7 +150,7 @@ def print_list_of_person(people_list):
     print(out_put)
     print(f"The relationship distance from {people_list[0].name} to {people_list[-1].name} is {len(people_list)-1} step(s).")
 
-def save_family_to_json(family_dict, filename="Zeynab_family_tree.json"):
+def save_family_to_json(family_dict, filename="zeynab_family_tree.json"):
     """Save the family data to a JSON file."""
     json_data = {
         name: person.to_dict()
@@ -160,7 +160,7 @@ def save_family_to_json(family_dict, filename="Zeynab_family_tree.json"):
         json.dump(json_data, file, indent=4)
     print(f"Family tree saved to {filename}")
 
-def load_family_from_json(filename="Zeynab_family_tree.json"):
+def load_family_from_json(filename="zeynab_family_tree.json"):
     """Load the family tree data from a JSON file and reconstruct the family graph."""
     with open(filename, "r") as file:
         json_data = json.load(file)

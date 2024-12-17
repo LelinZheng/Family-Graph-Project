@@ -140,7 +140,7 @@ class Menu:
                 filename = input('Enter the JSON filename or "DEMO" to load: ').strip()
 
                 if filename.rstrip() == "DEMO":
-                    filename = "Kardashian_family_tree.json"
+                    filename = "kardashian_family_tree.json"
 
                 family_tree = self.load_family_from_json(filename)
                 family_name = input("Enter the family name: ").strip()
@@ -200,7 +200,7 @@ class Menu:
                 elif option == "8":
                     create_graph(self.family)
                 elif option == "9":
-                    filename = input("Enter the filename to save (e.g., Kardashian_family_tree.json): ")
+                    filename = input("Enter the filename to save (e.g., kardashian_family_tree.json): ")
                     self.execute_action(option, filename)
                 elif option == "10":
                     if self.execute_action(option) == -1:
