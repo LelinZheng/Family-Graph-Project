@@ -121,8 +121,7 @@ This project primarily uses Python libraries:
 - `datetime`  
 - `json`  
 - `os`  
-- `NetworkX` (optional, for graph visualization)  
-
+- `NetworkX`
 ---
 
 ## Contributors  
