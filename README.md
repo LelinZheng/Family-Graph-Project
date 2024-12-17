@@ -79,7 +79,7 @@ Please choose one of the following options:
 
 Here’s an example graph visualization for the Kardashian Family:  
 
-![Kardashian Family Graph](#)
+![Kardashian Family Graph](https://github.com/LelinZheng/Family-Graph-Project/blob/webApp/demo_kardashian_family_graph.png)
 
 ---
 
